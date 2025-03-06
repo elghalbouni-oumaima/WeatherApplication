@@ -179,7 +179,6 @@ class MainWindow(QMainWindow):
         else:
             print("Erreur : Impossible de charger le fichier .env")
         self.Api_Key=os.getenv("API_KEY")
-        print( self.Api_Key)
         self.base_url_CityEntered = "http://api.openweathermap.org/geo/1.0/direct"
 
         #####   VARIABLE PAGE 2 ###############
