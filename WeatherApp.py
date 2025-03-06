@@ -1,9 +1,11 @@
 import requests
 import sys
+import os
 from PyQt5.QtWidgets import QApplication,QComboBox,QFrame,QListWidgetItem, QListWidget, QMainWindow, QLabel,QLineEdit,QPushButton,QHBoxLayout,QWidget,QVBoxLayout,QGraphicsDropShadowEffect
 from PyQt5.QtGui import QColor,QIcon,QPixmap
 from PyQt5.QtCore import Qt,QSize,QEvent
 from datetime import datetime,timedelta,timezone
+from dotenv import load_dotenv
 
 def get_icone(weather_id):    
         if weather_id == 800:
@@ -170,8 +172,14 @@ class MainWindow(QMainWindow):
         self.sunsetIcon=QLabel(self)
         self.sunsetLabel=QLabel("Sunset",self)
         self.sunsetValeur=QLabel("",self)
-        
-        self.Api_Key="aa2bde0004c745244f148173ef5e0eba"
+
+        # Charger les variables d'environnement depuis .env
+        if load_dotenv():
+            print("Fichier .env chargé avec succès")
+        else:
+            print("Erreur : Impossible de charger le fichier .env")
+        self.Api_Key=os.getenv("API_KEY")
+        print( self.Api_Key)
         self.base_url_CityEntered = "http://api.openweathermap.org/geo/1.0/direct"
 
         #####   VARIABLE PAGE 2 ###############
@@ -525,8 +533,9 @@ class MainWindow(QMainWindow):
         
     def click_button(self):
         self.citySearchedList.hide()
+        api=os.getenv("OPENCAGE_API_KEY")
         complete_url = f"http://api.openweathermap.org/data/2.5/weather?q={self.city}&appid={self.Api_Key}&units=metric"  # metric for Celsius temperature
-        location_url = f"https://api.opencagedata.com/geocode/v1/json?q={self.city}+&key=e781883732f04cadacebe748e350d5ab"
+        location_url = f"https://api.opencagedata.com/geocode/v1/json?q={self.city}+&key={api}"
         # Send the request to the API
         response = requests.get(complete_url)
         repLocation=requests.get(location_url)
