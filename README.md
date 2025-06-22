@@ -2,7 +2,7 @@
 A desktop weather application built with PyQt5 that displays current weather conditions and a 7-day forecast for any city. The app integrates APIs from OpenWeatherMap, Open-Meteo, and OpenCage to provide real-time weather data, with a user-friendly interface featuring temperature unit conversion (°C/°F), city search with autocomplete, and a visually appealing design with icons and shadow effects.
 Features
 
-# Current Weather (Page 1):
+## Current Weather (Page 1):
 
 Displays temperature, humidity, pressure, visibility, wind speed, sunrise, and sunset.
 Supports temperature conversion between Celsius and Fahrenheit.
@@ -10,7 +10,7 @@ Shows weather description and an icon based on conditions.
 Includes city name, country, region, and local time with a calendar icon.
 
 
-# 7-Day and Hourly Forecast (Page 2):
+## 7-Day and Hourly Forecast (Page 2):
 
 Provides a 7-day forecast with daily high/low temperatures, humidity, and weather icons.
 Shows hourly temperature and weather conditions for the next 20 hours.
